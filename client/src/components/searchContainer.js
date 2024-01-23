@@ -1,29 +1,37 @@
 import { useState, useEffect } from "react";
-import Result from "./Result";
-
 // Import our search method
 import search from "../utils/API";
 
 const SearchContainer = () => {
-  // Declare a new state variable, "results"
-  const [results, setResults] = useState([]);
+  const [user, setUser] = useState("");
 
-  // Method to get search results and set state
-  const searchLol = async (query) => {
-    const response = await search(query);
-    setResults(response);
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const inputValue = target.value;
+    setUser(inputValue);
   };
 
-  // We want to run this method when the component first loads so that we have images of kittens to display
-  // The second argument is the dependency array. This means that this method will only run when the component first loads
-  useEffect(() => {
-    searchLol("zlatanstopknot");
-  }, []);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    search(user);
+    setUser("");
+  };
 
   return (
     <div>
-      {/* Pass our results to the ResultsList component to map over */}
-      <ResultList results={results} />
+      <p>Hello!</p>
+      <form className="form">
+        <input
+          value={user}
+          name="user"
+          onChange={handleInputChange}
+          type="username"
+          placeholder="Enter Summoner Name"
+        />
+        <button type="button" onClick={handleFormSubmit}>
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

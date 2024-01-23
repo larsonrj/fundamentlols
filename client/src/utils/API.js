@@ -1,11 +1,17 @@
 import axios from "axios";
-require("dotenv").config();
 
-const key = process.env.api_key;
+const key = process.env.REACT_APP_API_KEY;
 
-const search = async (query) =>
-  axios.get(
-    `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${query}/NA1?api_key=${key}`
-  );
+const search = (query) =>
+  axios
+    .get(
+      `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${query}?api_key=${key}`
+    )
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-export default { search };
+export default search;
