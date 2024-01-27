@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Wrap Mongoose around local connection to MongoDB
 mongoose.connect(
@@ -11,4 +11,4 @@ mongoose.connect(
 );
 
 // Export connection
-module.exports = mongoose.connection;
+export default mongoose.connection;
