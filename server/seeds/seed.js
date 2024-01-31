@@ -2,7 +2,10 @@ import db from "../config/connection.js";
 
 import Climb from "../models/Climb.js";
 
-import climbData from "./climbData.json" assert { type: "json" };
+// Use create require to load JSON files using the CommonJS approach
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const climbData = require("./climbData.json");
 
 db.once("open", async () => {
   // clean database
