@@ -1,3 +1,3 @@
-import Climb from "./Climb";
+import Climb from "./Climb.js";
 
 export default Climb;
