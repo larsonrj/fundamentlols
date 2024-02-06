@@ -1,4 +1,4 @@
-import {Climb User } from "../models/index.js";
+import { Climb, User } from "../models/index.js";
 
 const resolvers = {
   Query: {
@@ -9,9 +9,7 @@ const resolvers = {
       return User.findOne({ email: email });
     },
   },
-  Mutation: {
-    
-  }
+  Mutation: {},
 };
 
 export default resolvers;
