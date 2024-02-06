@@ -9,6 +9,9 @@ const resolvers = {
       return User.findOne({ email: email });
     },
   },
+  Mutation: {
+    
+  }
 };
 
 export default resolvers;
