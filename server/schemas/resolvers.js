@@ -9,7 +9,14 @@ const resolvers = {
       return User.findOne({ email: email });
     },
   },
-  Mutation: {},
+  Mutation: {
+    addUser: async (parent, { username, email, password }) => {
+      const profile = await User.create({ username, email, password });
+      const token = signToken(profile);
+
+      return { token, profile };
+    },
+  },
 };
 
 export default resolvers;
